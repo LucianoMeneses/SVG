@@ -43,7 +43,4 @@ public class ProdutoForm {
 	public void setTamanho(EnumTamanho tamanho) {
 		this.tamanho = tamanho;
 	}
-	
-	
-
 }

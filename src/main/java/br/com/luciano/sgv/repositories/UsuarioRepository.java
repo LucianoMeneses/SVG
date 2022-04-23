@@ -12,7 +12,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 	@Query("SELECT u FROM Usuario u WHERE u.id = :id")
 	List<Usuario> findByIdDto(@Param("id") Long id);
-	
-	
-
 }

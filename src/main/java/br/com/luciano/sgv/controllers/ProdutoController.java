@@ -23,28 +23,26 @@ public class ProdutoController {
 	private ProdutoService produtoService;
 	
 	@GetMapping
-	public ResponseEntity<List<ProdutoDto>> findAll(){
+	public ResponseEntity<List<ProdutoDto>> buscarTodos(){
 		
-		List<ProdutoDto> produtos = produtoService.findAll();
+		List<ProdutoDto> produtos = produtoService.buscarTodos();
 		
 		return ResponseEntity.ok(produtos);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<List<ProdutoDto>> findById(@PathVariable Long id){
+	public ResponseEntity<List<ProdutoDto>> buscarPorId(@PathVariable Long id){
 		
-		List<ProdutoDto> produtos = produtoService.findById(id);
+		List<ProdutoDto> produtos = produtoService.buscarPorId(id);
 		
 		return ResponseEntity.ok(produtos);
-		
 	}
 	
 	@PostMapping
-	public ResponseEntity<List<ProdutoDto>> register(@RequestBody ProdutoForm produtoForm) {
+	public ResponseEntity<List<ProdutoDto>> cadastrar(@RequestBody ProdutoForm produtoForm) {
 		
-		List<ProdutoDto> produto = produtoService.register(produtoForm);
+		List<ProdutoDto> produto = produtoService.cadastrar(produtoForm);
 				
 		return ResponseEntity.ok(produto);
-		
 	}
 }

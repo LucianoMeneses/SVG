@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.luciano.sgv.form.PedidoForm;
+
 @Entity
 @Table(name = "ped_pedido")
 public class Pedido {
@@ -45,7 +47,7 @@ public class Pedido {
 	
 	@Column(name = "ped_forma_pagamento")
 	@Enumerated(EnumType.STRING)
-	private EnumFormaPagameto formaPagamento = EnumFormaPagameto.CARTAO_CREDITO;
+	private EnumFormaPagamento formaPagamento;
 	
 	@Column(name = "ped_status_venda")
 	@Enumerated(EnumType.STRING)
@@ -59,15 +61,24 @@ public class Pedido {
 		
 	}
 
-	public Pedido(Long id, Cliente cliente, Usuario usuario, Double valorTotal, LocalDate dataVenda, EnumStatusVenda statusVenda) {
+	public Pedido(Long id, Cliente cliente, Usuario usuario, Double valorTotal, LocalDate dataVenda, EnumStatusVenda statusVenda, EnumFormaPagamento formaPagamento) {
 		this.id = id;
 		this.cliente = cliente;
 		this.usuario = usuario;
 		this.valorTotal = valorTotal;
 		this.dataVenda = dataVenda;
 		this.statusVenda = statusVenda;
+		this.formaPagamento = formaPagamento;
 	}
 	
+	public Pedido(PedidoForm pedidoform) {
+		cliente = pedidoform.getCliente();
+		usuario = pedidoform.getUsuario();
+		valorTotal = pedidoform.getValorTotal();
+		statusVenda = pedidoform.getStatusVenda();
+		formaPagamento = pedidoform.getFormaPagamento();
+	}
+
 	public Double getTotal() {
 		
 		Double soma = 0.0;
@@ -104,11 +115,11 @@ public class Pedido {
 		this.itensPedido = itensPedido;
 	}
 
-	public EnumFormaPagameto getFormaPagamento() {
+	public EnumFormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
 
-	public void setFormaPagamento(EnumFormaPagameto formaPagamento) {
+	public void setFormaPagamento(EnumFormaPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
 

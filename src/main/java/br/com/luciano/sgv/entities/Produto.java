@@ -1,6 +1,7 @@
 package br.com.luciano.sgv.entities;
 
 import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Length;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 
 import br.com.luciano.sgv.form.ProdutoForm;
 
@@ -57,12 +58,11 @@ public class Produto {
 		this.tamanho = tamanho;
 	}
 	
-	public Produto(ProdutoForm entity) {
-		nome = entity.getNome();
-		descricao = entity.getDescricao();
-		preco = entity.getPreco();
-		tamanho = entity.getTamanho();
-		
+	public Produto(ProdutoForm produtoForm) {
+		nome = produtoForm.getNome();
+		descricao = produtoForm.getDescricao();
+		preco = produtoForm.getPreco();
+		tamanho = produtoForm.getTamanho();
 	}
 
 	public Long getId() {

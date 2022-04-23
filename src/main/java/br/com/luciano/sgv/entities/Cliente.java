@@ -9,14 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+
+import br.com.luciano.sgv.form.ClienteForm;
 
 @Entity
 @Table(name = "cli_cliente")
@@ -31,47 +31,70 @@ public class Cliente {
 	@Column(name = "cli_nome")
 	private String nome;
 	
-	@NotNull @NotEmpty @Length(max = 150)
-	@Column(name = "cli_endereco")
-	private String endereco;
-	
-	@NotNull @NotEmpty @Length(max = 50)
-	@Column(name = "cli_cidade")
-	private String cidade;
-	
-	@Length(max = 10)
-	@Column(name = "cli_cep")
-	private String cep;
+	@Length(max = 50)
+	@Column(name = "cli_email")
+	private String email;
 	
 	@NotNull @NotEmpty @Length(max = 15)
 	@Column(name = "cli_telefone")
 	private String telefone;
 	
-	@Column(name = "cli_dat_cadastro")
-	private LocalDate dataCadastro;
+	@NotNull @NotEmpty @Length(max = 50)
+	@Column(name = "cli_cidade")
+	private String cidade;
 	
-	@OneToOne
-	@JoinColumn(name = "usu_id")
-	private Usuario usuario;
+	@NotNull @NotEmpty @Length(max = 50)
+	@Column(name = "cli_bairro")
+	private String bairro;
+	
+	@NotNull @NotEmpty @Length(max = 50)
+	@Column(name = "cli_rua")
+	private String rua;
+	
+	@NotNull @NotEmpty @Length(max = 50)
+	@Column(name = "cli_numero")
+	private String numero;
+	
+	@Length(max = 50)
+	@Column(name = "cli_complemento")
+	private String complemento;
+	
+	@Column(name = "cli_dat_cadastro")
+	private LocalDate dataCadastro = LocalDate.now();
 	
 	@OneToMany(mappedBy = "cliente") 
-	@Column(name = "cli_id")
+	@Column(name = "cli_pedidos")
 	private List<Pedido> pedidos = new ArrayList<>(); 
 	
 	public Cliente () {
 		
 	}
 	
-	public Cliente(Long id,String nome, String endereco, String cidade, String cep,  String telefone, LocalDate dataCadastro, Usuario usuario, List<Pedido> pedidos) {
+	public Cliente(Long id, String nome, String cidade, String bairro, String rua, String numero, String complemento, String email,  String telefone, LocalDate dataCadastro, List<Pedido> pedidos) {
 		this.id = id;
 		this.nome = nome;
-		this.endereco = endereco;
 		this.cidade = cidade;
-		this.cep = cep;
+		this.email = email;
 		this.telefone = telefone;
 		this.dataCadastro = dataCadastro;
-		this.usuario = usuario;
 		this.pedidos = pedidos;
+		this.complemento = complemento;
+		this.bairro = bairro;
+		this.rua = rua;
+		this.numero = numero;
+	}
+	
+	public Cliente (ClienteForm clienteForm) {
+		id = clienteForm.getId();
+		nome = clienteForm.getNome();
+		cidade = clienteForm.getCidade();
+		email = clienteForm.getEmail();
+		telefone = clienteForm.getTelefone();
+		pedidos = clienteForm.getPedidos();
+		rua = clienteForm.getRua();
+		bairro = clienteForm.getBairro();
+		numero = clienteForm.getNumero();
+		
 	}
 
 	public Long getId() {
@@ -89,13 +112,12 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getEndereco() {
-		return endereco;
+	
+	public String getComplemento() {
+		return complemento;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setComplemento(String complemento) {
 	}
 
 	public String getCidade() {
@@ -106,12 +128,12 @@ public class Cliente {
 		this.cidade = cidade;
 	}
 
-	public String getCep() {
-		return cep;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCep(String cep) {
-		this.cep = cep;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getTelefone() {
@@ -130,15 +152,31 @@ public class Cliente {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}	
 }

@@ -18,6 +18,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
+import br.com.luciano.sgv.form.UsuarioForm;
+
 @Entity
 @Table(name = "usu_usuario")
 public class Usuario {
@@ -32,7 +34,7 @@ public class Usuario {
 	private String nome;
 	
 	@Column(name = "usu_dat_cadastro")
-	private LocalDate dataCadastro;
+	private LocalDate dataCadastro = LocalDate.now();
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "usu_perfil")
@@ -52,6 +54,12 @@ public class Usuario {
 		this.dataCadastro = dataCadastro;
 		this.perfil = perfil;
 		this.pedidos = pedidos;
+	}
+
+	public Usuario(UsuarioForm usuarioForm) {
+		nome = usuarioForm.getNome();
+		perfil = usuarioForm.getPerfil();
+		pedidos = usuarioForm.getPedidos();
 	}
 
 	public Long getId() {
@@ -89,5 +97,4 @@ public class Usuario {
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
-
 }

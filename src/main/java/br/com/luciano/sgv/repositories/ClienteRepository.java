@@ -12,5 +12,4 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	
 	@Query("SELECT c FROM Cliente c Where c.id = :id")
 	List<Cliente> findByIdDto(@Param("id") Long id);
-
 }

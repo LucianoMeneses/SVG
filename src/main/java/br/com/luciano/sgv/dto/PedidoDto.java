@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.luciano.sgv.entities.Cliente;
-import br.com.luciano.sgv.entities.EnumFormaPagameto;
+import br.com.luciano.sgv.entities.EnumFormaPagamento;
 import br.com.luciano.sgv.entities.EnumStatusVenda;
 import br.com.luciano.sgv.entities.ItemPedido;
 import br.com.luciano.sgv.entities.Pedido;
@@ -27,17 +26,16 @@ public class PedidoDto implements Serializable{
 
 	private LocalDate dataVenda = LocalDate.now();
 	
-	private EnumFormaPagameto formaPagamento;
+	private EnumFormaPagamento formaPagamento;
 	
 	private EnumStatusVenda statusVenda;
 	
 	public PedidoDto () {
 		
-		
 	}
 
 	public PedidoDto(Long id, Cliente cliente, List<ItemPedido> itensPedido, Usuario usuario, Double valorTotal,
-			LocalDate dataVenda, EnumFormaPagameto formaPagamento, EnumStatusVenda statusVenda) {
+			LocalDate dataVenda, EnumFormaPagamento formaPagamento, EnumStatusVenda statusVenda) {
 		super();
 		this.id = id;
 		this.cliente = cliente;
@@ -58,7 +56,6 @@ public class PedidoDto implements Serializable{
 		dataVenda = entity.getDataVenda();
 		formaPagamento = entity.getFormaPagamento();
 		statusVenda = entity.getStatusVenda();
-		
 	}
 
 	public Long getId() {
@@ -109,11 +106,11 @@ public class PedidoDto implements Serializable{
 		this.dataVenda = dataVenda;
 	}
 
-	public EnumFormaPagameto getFormaPagamento() {
+	public EnumFormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
 
-	public void setFormaPagamento(EnumFormaPagameto formaPagamento) {
+	public void setFormaPagamento(EnumFormaPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
 

@@ -7,7 +7,6 @@ import java.util.List;
 
 import br.com.luciano.sgv.entities.Cliente;
 import br.com.luciano.sgv.entities.Pedido;
-import br.com.luciano.sgv.entities.Usuario;
 
 public class ClienteDto implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -16,17 +15,21 @@ public class ClienteDto implements Serializable{
 
 	private String nome;
 	
-	private String endereco;
+	private String email;
+	
+	private String telefone;
 	
 	private String cidade;
 	
-	private String cep;
-
-	private String telefone;
+	private String bairro;
+	
+	private String rua;
+	
+	private String numero;
+	
+	private String complemento;
 	
 	private LocalDate dataCadastro;
-
-	private Usuario usuario;
 	
 	private List<Pedido> pedidos = new ArrayList<>(); 
 	
@@ -34,29 +37,33 @@ public class ClienteDto implements Serializable{
 	
 	}
 
-	public ClienteDto(Long id, String nome, String endereco, String cidade, String cep, String telefone,
-			LocalDate dataCadastro, Usuario usuario, List<Pedido> pedidos) {
+	public ClienteDto(Long id, String nome, String email, String cidade, String complemento, String bairro, String rua,String numero, String telefone,
+			LocalDate dataCadastro, List<Pedido> pedidos) {
 		this.id = id;
 		this.nome = nome;
-		this.endereco = endereco;
-		this.cidade = cidade;
-		this.cep = cep;
+		this.email = email;
 		this.telefone = telefone;
+		this.cidade = cidade;
+		this.bairro = bairro;
+		this.rua = rua;
+		this.numero = numero;
 		this.dataCadastro = dataCadastro;
-		this.usuario = usuario;
 		this.pedidos = pedidos;
+		this.complemento = complemento;
 	}
 	
 	public ClienteDto (Cliente entity) {
 		id = entity.getId();
 		nome = entity.getNome();
-		endereco = entity.getEndereco();
-		cidade = entity.getCidade();
-		cep = entity.getCep();
+		email = entity.getEmail();
 		telefone = entity.getTelefone();
+		cidade = entity.getCidade();
+		bairro = entity.getBairro();
+		rua = entity.getRua();
+		numero = entity.getNumero();
 		dataCadastro = entity.getDataCadastro();
-		usuario = entity.getUsuario();
-		pedidos = entity.getPedidos();	
+		pedidos = entity.getPedidos();
+		complemento = entity.getComplemento();
 	}
 
 	public Long getId() {
@@ -75,28 +82,12 @@ public class ClienteDto implements Serializable{
 		this.nome = nome;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
 	public String getCidade() {
 		return cidade;
 	}
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
 	}
 
 	public String getTelefone() {
@@ -115,20 +106,48 @@ public class ClienteDto implements Serializable{
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
 
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
+	public String getComplemento() {
+		return complemento;
 	}
-	
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
 }

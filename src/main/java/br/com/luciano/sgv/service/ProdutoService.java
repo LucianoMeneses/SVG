@@ -16,32 +16,29 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
-	
-	public List<ProdutoDto> findAll(){
-		
+
+	public List<ProdutoDto> buscarTodos() {
+
 		List<Produto> produtos = produtoRepository.findAll();
-		
+
 		return produtos.stream().map(x -> new ProdutoDto(x)).collect(Collectors.toList());
-				
 	}
-	
-	public List<ProdutoDto> findById(Long id){
-		
+
+	public List<ProdutoDto> buscarPorId(Long id) {
+
 		List<Produto> produtos = produtoRepository.findByIdDto(id);
-		
+
 		return produtos.stream().map(x -> new ProdutoDto(x)).collect(Collectors.toList());
 	}
-	
-	public List<ProdutoDto> register(ProdutoForm produtoForm) {
-		
+
+	public List<ProdutoDto> cadastrar(ProdutoForm produtoForm) {
+
 		Produto produto = new Produto(produtoForm);
-		
+
 		produtoRepository.save(produto);
-		
+
 		List<Produto> novoProduto = produtoRepository.findByIdDto(produto.getId());
-		
-		return novoProduto.stream().map(x -> new ProdutoDto(x)).collect(Collectors.toList());		
-		
-		
+
+		return novoProduto.stream().map(x -> new ProdutoDto(x)).collect(Collectors.toList());
 	}
 }

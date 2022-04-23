@@ -77,8 +77,4 @@ public class UsuarioDto implements Serializable{
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
-
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
 }
