@@ -1,4 +1,6 @@
 package br.com.luciano.sgv.entities;
+import br.com.luciano.sgv.enumerators.*;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;

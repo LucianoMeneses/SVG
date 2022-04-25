@@ -3,7 +3,6 @@ package br.com.luciano.sgv.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import br.com.luciano.sgv.entities.EnumTamanho;
 import br.com.luciano.sgv.entities.Produto;
 
 public class ProdutoDto implements Serializable {
@@ -19,20 +18,16 @@ public class ProdutoDto implements Serializable {
 
 	private LocalDate dataCadastro;
 
-	private EnumTamanho tamanho;
-
 	public ProdutoDto() {
 
 	}
 
-	public ProdutoDto(Long id, String nome, String descricao, Double preco, LocalDate dataCadastro,
-			EnumTamanho tamanho) {
+	public ProdutoDto(Long id, String nome, String descricao, Double preco, LocalDate dataCadastro) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.dataCadastro = dataCadastro;
-		this.tamanho = tamanho;
 	}
 
 	public ProdutoDto(Produto entity) {
@@ -41,7 +36,6 @@ public class ProdutoDto implements Serializable {
 		descricao = entity.getDescricao();
 		preco = entity.getPreco();
 		dataCadastro = entity.getDataCadastro();
-		tamanho = entity.getTamanho();
 	}
 
 	public Long getId() {
@@ -84,11 +78,4 @@ public class ProdutoDto implements Serializable {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public EnumTamanho getTamanho() {
-		return tamanho;
-	}
-
-	public void setTamanho(EnumTamanho tamanho) {
-		this.tamanho = tamanho;
-	}
 }

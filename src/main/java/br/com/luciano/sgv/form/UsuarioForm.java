@@ -1,8 +1,7 @@
 package br.com.luciano.sgv.form;
-
+import br.com.luciano.sgv.enumerators.*;
 import java.util.ArrayList;
 import java.util.List;
-import br.com.luciano.sgv.entities.EnumPerfilUsuario;
 import br.com.luciano.sgv.entities.Pedido;
 
 public class UsuarioForm {

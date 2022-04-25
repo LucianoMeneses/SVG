@@ -1,7 +1,5 @@
 package br.com.luciano.sgv.form;
 
-import br.com.luciano.sgv.entities.EnumTamanho;
-
 public class ProdutoForm {
 	
 	private String nome;
@@ -10,8 +8,6 @@ public class ProdutoForm {
 	
 	private Double preco;
 	
-	private EnumTamanho tamanho;
-
 	public String getNome() {
 		return nome;
 	}
@@ -34,13 +30,5 @@ public class ProdutoForm {
 
 	public void setPreco(Double preco) {
 		this.preco = preco;
-	}
-
-	public EnumTamanho getTamanho() {
-		return tamanho;
-	}
-
-	public void setTamanho(EnumTamanho tamanho) {
-		this.tamanho = tamanho;
 	}
 }

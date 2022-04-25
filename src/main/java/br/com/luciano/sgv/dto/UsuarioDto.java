@@ -1,11 +1,9 @@
 package br.com.luciano.sgv.dto;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import br.com.luciano.sgv.entities.EnumPerfilUsuario;
+import br.com.luciano.sgv.enumerators.*;
 import br.com.luciano.sgv.entities.Pedido;
 import br.com.luciano.sgv.entities.Usuario;
 
@@ -78,3 +76,4 @@ public class UsuarioDto implements Serializable{
 		return pedidos;
 	}
 }
+

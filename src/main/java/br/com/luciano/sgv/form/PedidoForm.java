@@ -6,8 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import br.com.luciano.sgv.entities.Cliente;
-import br.com.luciano.sgv.entities.EnumFormaPagamento;
-import br.com.luciano.sgv.entities.EnumStatusVenda;
+import br.com.luciano.sgv.enumerators.*;
 import br.com.luciano.sgv.entities.ItemPedido;
 import br.com.luciano.sgv.entities.Usuario;
 

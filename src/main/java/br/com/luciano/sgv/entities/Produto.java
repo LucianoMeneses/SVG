@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,29 +38,23 @@ public class Produto {
 	
 	@Column(name = "pro_dat_cadastro")
 	private LocalDate dataCadastro = LocalDate.now();
-	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "pro_tamanho")
-	private EnumTamanho tamanho;
-	
+		
 	public Produto() {
 		
 	}
 
-	public Produto(Long id, String nome, String descricao, Double preco, LocalDate dataCadastro, EnumTamanho tamanho) {
+	public Produto(Long id, String nome, String descricao, Double preco, LocalDate dataCadastro) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.dataCadastro = dataCadastro;
-		this.tamanho = tamanho;
 	}
 	
 	public Produto(ProdutoForm produtoForm) {
 		nome = produtoForm.getNome();
 		descricao = produtoForm.getDescricao();
 		preco = produtoForm.getPreco();
-		tamanho = produtoForm.getTamanho();
 	}
 
 	public Long getId() {
@@ -103,13 +95,5 @@ public class Produto {
 
 	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
-	}
-
-	public EnumTamanho getTamanho() {
-		return tamanho;
-	}
-
-	public void setTamanho(EnumTamanho tamanho) {
-		this.tamanho = tamanho;
 	}
 }
