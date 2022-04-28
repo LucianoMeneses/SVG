@@ -43,4 +43,10 @@ public class UsuarioService {
 
 		return novoUsuario.stream().map(x -> new UsuarioDto(x)).collect(Collectors.toList());
 	}
+
+	public void deletar(Long id){
+		
+		usuarioRepository.deleteById(id);
+			
+	}
 }

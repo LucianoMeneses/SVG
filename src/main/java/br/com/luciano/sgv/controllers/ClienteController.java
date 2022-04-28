@@ -58,10 +58,10 @@ public class ClienteController {
 			
 		} catch (EmptyResultDataAccessException e) {
 			
-		return new ResponseEntity<String>("Usuário não existe", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>("Cliente não existe", HttpStatus.BAD_REQUEST);
 		
 		}
 		
-		return new ResponseEntity<String>("Usuário deletado", HttpStatus.NO_CONTENT);
+		return new ResponseEntity<String>("Cliente deletado", HttpStatus.NO_CONTENT);
 	}
 }
