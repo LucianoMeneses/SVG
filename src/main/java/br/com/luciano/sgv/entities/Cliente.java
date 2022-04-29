@@ -27,7 +27,7 @@ public class Cliente {
 	@Column(name = "cli_id")
 	private Long id;
 	
-	@NotNull @NotEmpty @Length(max = 100)
+	@NotNull @NotEmpty @Length(max = 50)
 	@Column(name = "cli_nome")
 	private String nome;
 	
@@ -35,23 +35,23 @@ public class Cliente {
 	@Column(name = "cli_email")
 	private String email;
 	
-	@NotNull @NotEmpty @Length(max = 15)
+	@NotNull @NotEmpty @Length(max = 12)
 	@Column(name = "cli_telefone")
 	private String telefone;
 	
-	@NotNull @NotEmpty @Length(max = 50)
+	@NotNull @NotEmpty @Length(max = 30)
 	@Column(name = "cli_cidade")
 	private String cidade;
 	
-	@NotNull @NotEmpty @Length(max = 50)
+	@NotNull @NotEmpty @Length(max = 30)
 	@Column(name = "cli_bairro")
 	private String bairro;
 	
-	@NotNull @NotEmpty @Length(max = 50)
+	@NotNull @NotEmpty @Length(max = 40)
 	@Column(name = "cli_rua")
 	private String rua;
 	
-	@NotNull @NotEmpty @Length(max = 50)
+	@NotNull @NotEmpty @Length(max = 10)
 	@Column(name = "cli_numero")
 	private String numero;
 	
@@ -94,6 +94,7 @@ public class Cliente {
 		rua = clienteForm.getRua();
 		bairro = clienteForm.getBairro();
 		numero = clienteForm.getNumero();
+		complemento = clienteForm.getComplemento();
 		
 	}
 
