@@ -86,15 +86,29 @@ public class Cliente {
 	
 	public Cliente (ClienteForm clienteForm) {
 		id = clienteForm.getId();
-		nome = clienteForm.getNome();
-		cidade = clienteForm.getCidade();
-		email = clienteForm.getEmail();
-		telefone = clienteForm.getTelefone();
+		nome = clienteForm.getNome().trim();
+		cidade = clienteForm.getCidade().trim();
+		email = clienteForm.getEmail().trim();
+		telefone = clienteForm.getTelefone().trim();
 		pedidos = clienteForm.getPedidos();
-		rua = clienteForm.getRua();
-		bairro = clienteForm.getBairro();
-		numero = clienteForm.getNumero();
-		complemento = clienteForm.getComplemento();
+		rua = clienteForm.getRua().trim();
+		bairro = clienteForm.getBairro().trim();
+		numero = clienteForm.getNumero().trim();
+		complemento = clienteForm.getComplemento().trim();
+		
+	}
+	
+	public void setCliente (ClienteForm clienteForm) {
+		
+		nome = clienteForm.getNome().trim();
+		cidade = clienteForm.getCidade().trim();
+		email = clienteForm.getEmail().trim();
+		telefone = clienteForm.getTelefone().trim();
+		pedidos = clienteForm.getPedidos();
+		rua = clienteForm.getRua().trim();
+		bairro = clienteForm.getBairro().trim();
+		numero = clienteForm.getNumero().trim();
+		complemento = clienteForm.getComplemento().trim();
 		
 	}
 

@@ -2,8 +2,10 @@ package br.com.luciano.sgv.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import br.com.luciano.sgv.dto.ClienteDto;
 import br.com.luciano.sgv.entities.Cliente;
 import br.com.luciano.sgv.form.ClienteForm;
@@ -48,10 +50,23 @@ public class ClienteService {
 	}
 
 	public void deletar(ClienteForm clienteForm) {
-		
-		System.out.println(clienteForm.getNome());
 
 		clienteRepository.deleteById(clienteForm.getId());
+
+	}
+
+	@SuppressWarnings("deprecation")
+	public List<ClienteDto> alterar(ClienteForm clienteForm, Long id) {
+		
+		Cliente cliente = clienteRepository.getOne(id);
+				
+		cliente.setCliente(clienteForm);
+
+		clienteRepository.save(cliente);
+		
+		List<Cliente> novoCliente = clienteRepository.findByIdDto(cliente.getId());
+	
+		return novoCliente.stream().map(x -> new ClienteDto(x)).collect(Collectors.toList());
 
 	}
 

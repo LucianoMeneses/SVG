@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,7 +77,17 @@ public class ClienteController {
 
 			return new ResponseEntity<String>("Cliente não existe", HttpStatus.BAD_REQUEST);
 		}
-		
+
 		return new ResponseEntity<String>("Cliente deletado", HttpStatus.NO_CONTENT);
 	}
+
+	@PutMapping(value = "{id}")
+	public ResponseEntity<List<ClienteDto>> alterar(@RequestBody ClienteForm clienteForm, @PathVariable Long id) {
+
+		List<ClienteDto> cliente = clienteService.alterar(clienteForm, id);
+
+		return ResponseEntity.ok(cliente);
+
+	}
+
 }
