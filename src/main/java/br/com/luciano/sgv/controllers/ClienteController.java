@@ -24,42 +24,57 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<ClienteDto>> buscarTodos(){
-		
+	public ResponseEntity<List<ClienteDto>> buscarTodos() {
+
 		List<ClienteDto> clientes = clienteService.buscarTodos();
-		
+
 		return ResponseEntity.ok(clientes);
 	}
-	
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<List<ClienteDto>> buscarPorId(@PathVariable Long id){
-		
+	public ResponseEntity<List<ClienteDto>> buscarPorId(@PathVariable Long id) {
+
 		List<ClienteDto> clientes = clienteService.buscarPorId(id);
-		
+
 		return ResponseEntity.ok(clientes);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<List<ClienteDto>> cadastrar(@RequestBody ClienteForm clienteForm){
-		
+	public ResponseEntity<List<ClienteDto>> cadastrar(@RequestBody ClienteForm clienteForm) {
+
 		List<ClienteDto> cliente = clienteService.cadastrar(clienteForm);
-		
-		return ResponseEntity.ok(cliente);		
+
+		return ResponseEntity.ok(cliente);
 	}
-	
+
 	@DeleteMapping(value = "{id}")
-	public ResponseEntity<String> deletar(@PathVariable Long id){
-		
+	public ResponseEntity<String> deletar(@PathVariable Long id) {
+
 		try {
-			
+
 			clienteService.deletar(id);
-			
+
 		} catch (EmptyResultDataAccessException e) {
-			
-		return new ResponseEntity<String>("Cliente não existe", HttpStatus.BAD_REQUEST);
-		
+
+			return new ResponseEntity<String>("Cliente não existe", HttpStatus.BAD_REQUEST);
+
+		}
+
+		return new ResponseEntity<String>("Cliente deletado", HttpStatus.NO_CONTENT);
+	}
+
+	@PostMapping(value = "/deletarClientes")
+	public ResponseEntity<String> deletarMaisDeUm(@RequestBody ClienteForm clienteForm) {
+
+		try {
+
+			clienteService.deletar(clienteForm);
+
+		} catch (EmptyResultDataAccessException e) {
+
+			return new ResponseEntity<String>("Cliente não existe", HttpStatus.BAD_REQUEST);
 		}
 		
 		return new ResponseEntity<String>("Cliente deletado", HttpStatus.NO_CONTENT);
